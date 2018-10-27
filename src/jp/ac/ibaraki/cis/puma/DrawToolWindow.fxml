@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.collections.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.canvas.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane prefWidth="800" prefHeight="600"
+	xmlns:fx="http://javafx.com/fxml/1"
+	fx:controller="jp.ac.ibaraki.cis.puma.DrawToolWindowController">
+	<top>
+		<MenuBar>
+			<menus>
+				<Menu text="ファイル">
+					<items>
+						<MenuItem text="BMPを開く" onAction="#handleOpen" />
+						<MenuItem text="BMPで保存" onAction="#handleSave" />
+						<MenuItem text="アプリケーションの終了" onAction="#handleExit" />
+					</items>
+				</Menu>
+				<Menu text="編集">
+					<items>
+						<MenuItem text="全てのレイヤーを初期化" onAction="#handleReset" />
+					</items>
+				</Menu>
+				<Menu text="ヘルプ">
+					<items>
+						<MenuItem text="バージョン情報" onAction="#handleVersion" />
+					</items>
+				</Menu>
+			</menus>
+		</MenuBar>
+	</top>
+	<center>
+		<AnchorPane>
+			<children>
+				<VBox>
+					<HBox>
+						<VBox>
+							<padding>
+								<Insets left="20" />
+							</padding>
+							<HBox>
+								<Label text="赤　" textFill="red" prefHeight="20" />
+								<Slider fx:id="slider_RED" prefWidth="200"
+									prefHeight="20" min="0" max="255" />
+								<Label fx:id="label_RED" text="　：0" prefWidth="60"
+									prefHeight="20" />
+							</HBox>
+							<HBox>
+								<Label text="緑　" textFill="green" prefHeight="20" />
+								<Slider fx:id="slider_GREEN" prefWidth="200"
+									prefHeight="20" min="0" max="255" />
+								<Label fx:id="label_GREEN" text="　：0" prefWidth="60"
+									prefHeight="20" />
+							</HBox>
+							<HBox>
+								<Label text="青　" textFill="blue" prefHeight="20" />
+								<Slider fx:id="slider_BLUE" prefWidth="200"
+									prefHeight="20" min="0" max="255" />
+								<Label fx:id="label_BLUE" text="　：0" prefWidth="60"
+									prefHeight="20" />
+							</HBox>
+						</VBox>
+						<HBox>
+							<Label text="線の太さ：" prefHeight="40" />
+							<Slider fx:id="slider_LINE_WIDTH" prefWidth="200"
+								prefHeight="60" min="1.0" max="10.0" showTickLabels="true" />
+						</HBox>
+					</HBox>
+					<HBox>
+						<padding>
+							<Insets left="10" />
+						</padding>
+						<fx:define>
+							<ToggleGroup fx:id="group" />
+						</fx:define>
+						<RadioButton text="自由線" onAction="#setFreeLineMode"
+							prefWidth="100" prefHeight="30" toggleGroup="$group"
+							selected="true" />
+						<RadioButton text="矩形" onAction="#setRectangleMode"
+							prefWidth="100" prefHeight="30" toggleGroup="$group" />
+						<RadioButton text="曲線" onAction="#setCurveMode"
+							prefWidth="100" prefHeight="30" toggleGroup="$group" />
+						<RadioButton text="楕円" onAction="#setEllipseMode"
+							prefWidth="100" prefHeight="30" toggleGroup="$group" />
+						<Label text="レイヤー：" prefHeight="30" />
+						<ComboBox fx:id="layerCombo" onAction="#handleLayer"
+							prefHeight="30">
+							<items>
+								<FXCollections fx:factory="observableArrayList">
+									<Integer fx:value="1" />
+									<Integer fx:value="2" />
+									<Integer fx:value="3" />
+									<Integer fx:value="4" />
+									<Integer fx:value="5" />
+								</FXCollections>
+							</items>
+						</ComboBox>
+						<Button text="全消し" onAction="#handleClear" prefHeight="30" />
+					</HBox>
+					<Pane style="-fx-background-color:white;" fx:id="rootPane"
+						prefWidth="800" prefHeight="500">
+						<Canvas fx:id="rootCanvas" width="800" height="500" />
+					</Pane>
+				</VBox>
+			</children>
+		</AnchorPane>
+	</center>
+</BorderPane>

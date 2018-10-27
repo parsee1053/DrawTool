@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<GridPane id="GridPane" alignment="center" prefHeight="100.0"
+	prefWidth="300.0" xmlns:fx="http://javafx.com/fxml/1"
+	fx:controller="jp.ac.ibaraki.cis.puma.VersionWindowController">
+	<HBox>
+		<VBox>
+			<Label text="お絵かきツール" />
+			<Label text="Ver1.4ぐらい" />
+			<Label text="Copyright(C) 2016-2017 by Shotaro Naiki" />
+		</VBox>
+		<Button text="OK" prefWidth="50.0" onAction="#handleClose" />
+	</HBox>
+</GridPane>
